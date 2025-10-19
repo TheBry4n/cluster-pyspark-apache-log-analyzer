@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Distribution
+build/
+dist/
+*.egg-info/
+*.egg
+
+# PySpark / Big Data
+metastore_db/
+spark-warehouse/
+derby.log
+checkpoints/
+_spark_metadata/
+
+# Output
+output/
+*.parquet/
+*.csv/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*~
+
+# Logs
+#*.log
+#logs/
+
+# Temporary
+*.tmp
+*.swp
+.env
