@@ -2,9 +2,15 @@
 This module contains the configuration for the Apache log analyzer.
 """
 
+import os
+
 # Path
-LOG_FILE_PATH = "data/apache_test.log"
-OUTPUT_DIR = "output"
+if os.path.exists("/opt/spark-data"):
+    LOG_FILE_PATH = "/opt/spark-data/apache_test.log"
+    OUTPUT_DIR = "/opt/spark-output"
+else:
+    LOG_FILE_PATH = "data/apache_test.log"
+    OUTPUT_DIR = "output"
 
 # Regex patterns for parsing
 TIMESTAMP_PATTERN = r'\[(.*?)\]'

@@ -8,13 +8,16 @@ import parser
 import cleaner
 import analyzer
 import config
+import os
 
 def main():
     # Initialize Spark session
 
+    spark_master_url = os.getenv("SPARK_MASTER_URL", "local[*]")
+
     spark = SparkSession.builder \
         .appName("Apache Log Analyzer") \
-        .master("local[*]") 
+        .master(spark_master_url) 
     
     for key, value in config.SPARK_CONFIGS.items():
         spark = spark.config(key, value)
@@ -22,7 +25,7 @@ def main():
     spark = spark.getOrCreate()
     spark.sparkContext.setLogLevel(config.SPARK_LOG_LEVEL)
 
-    print("\n Apache Log Analyzer - Starting...")
+    print(f"\n Apache Log Analyzer - Starting... (Master: {spark_master_url})")
 
     # Load log file into DataFrame
     print(f"\n Loading log file from: {config.LOG_FILE_PATH}")
